@@ -113,6 +113,10 @@ def get_user_inputs_and_calculate_extremism():
     extremism_score = (calculate_extremism(df, weights).iloc[0] + 7000) / (21000 + 7000)
 
     print(f"Overall Extremism Score: {extremism_score}")
+    if extremism_score > 0.5:
+        print("The idea is extreme.")
+    else:
+        print("The idea is not extreme.")
 
 # Run the function to get user inputs and calculate extremism
 get_user_inputs_and_calculate_extremism()
