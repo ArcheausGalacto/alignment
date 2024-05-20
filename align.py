@@ -99,12 +99,16 @@ def get_user_inputs_and_calculate_extremism():
         'Ethical Risk': f"Here is the prompt to evaluate for ethical risk between 0 and 1. Don't output anything about the prompt other than a score representing ethical risk'{user_input}', Ethical risk involves the potential moral issues related to an action. Provide a score between 0 and 1.",
         'Technical Feasibility': f"Here is the prompt to evaluate for technical feasibility between 0 and 1. Don't output anything about the prompt other than a score representing technical feasibility'{user_input}', Technical feasibility is the practicality of a given technical solution. Provide a score between 0 and 1.",
         'Security Risk': f"Here is the prompt to evaluate for security risk between 0 and 1. Don't output anything about the prompt other than a score representing security risk'{user_input}', Security risk is something which can negatively impact one or more computers, or security systems which keep people or computers safe. Provide a score between 0 and 1.",
-        'Environmental Impact': f"Here is the prompt to evaluate for environmental impact between 0 and 1. Don't output anything about the prompt other than a score representing environmental impact'{user_input}', Environmental impact is the effect of an action on the natural environment. Provide a score between 0 and 1.",
+        'Environmental Impact': f"Here is the prompt to evaluate for environmental impact between 0 and 1. Don't output anything about the prompt other than a score representing environmental impact'{user_input}', Environmental impact is the effect of an action on the natural environment. 1 indicates huge impact, 0 indicates no impact. Provide a score between 0 and 1.",
         'Public Perception': f"Here is the prompt to evaluate for public perception between 0 and 1. Don't output anything about the prompt other than a score representing public perception'{user_input}', When public perception is low, that means a negative public opinion. When it is high, that means positive. Provide a score between 0 and 1."
     }
 
     # Get scores for each category using ChatGPT
     scores = {category: get_score(category, prompt) for category, prompt in prompts.items()}
+
+    # Print the scores for each category
+    for category, score in scores.items():
+        print(f"{category}: {score}")
 
     # Create a DataFrame with the scores
     df = pd.DataFrame([scores])
